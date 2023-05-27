@@ -1,0 +1,44 @@
+{
+	"data": {
+		"filename": "nasdaq100.csv",
+		"from_date": "2010-01-01",
+		"columns": [
+			"Close",
+			"Volume"
+		],
+		"prediction_length": 25,
+		"sequence_length": 50,
+		"train_test_split": 0.85
+	},
+	"training": {
+		"epochs": {"min": 2, "max": 6, "step": 2},
+		"batch_size": {"min": 60, "max": 90, "step": 30}
+	},
+	"model": {
+		"loss": "mse",
+		"optimizer": "adam",
+		"save_dir": "saved_models",
+		"neurons_per_lstm_layer": {"min": 100, "max": 200, "step": 100},
+		"lstm_layers": {"min": 2, "max": 3, "step": 1},
+		"layers": [
+			{
+				"type": "lstm",
+				"input_timesteps": 49,
+				"input_dim": 2,
+				"return_seq": true
+			},
+			{
+				"type": "dropout",
+				"rate": 0.2
+			},
+			{
+				"type": "hidden_lstm_layers"
+			},
+			{
+				"type": "dense",
+				"neurons": 1,
+				"activation": "linear"
+			}
+		]
+	}
+}
