@@ -2,7 +2,6 @@
 
 This project implements an LSTM (Long Short-Term Memory) model for predicting the future trends of the NASDAQ 100 index. The model is trained using different combinations of hyperparameters to find the best configuration for accurate predictions.
 
-Certainly! Here's a section explaining LSTM (Long Short-Term Memory) in the context of your code:
 
 ![Image Description](images/nasdaq100_pred.png)
 
@@ -14,27 +13,27 @@ In your code, the LSTM model is used for predicting stock prices in the NASDAQ 1
 
 ### LSTM Layers
 
-The LSTM model consists of one or more LSTM layers. Each layer contains multiple LSTM units, also known as memory cells. These cells have the ability to retain and utilize information over extended sequences, allowing the model to capture long-term dependencies. In your code, the number of LSTM layers is controlled by the `lstm_layers` parameter in the configuration file.
+The LSTM model consists of one or more LSTM layers. Each layer contains multiple LSTM units, also known as memory cells. These cells have the ability to retain and utilize information over extended sequences, allowing the model to capture long-term dependencies. The number of LSTM layers is controlled by the `lstm_layers` parameter in the configuration file.
 
 ### Neurons per LSTM Layer
 
-The `neurons_per_lstm_layer` parameter determines the number of neurons (memory cells) in each LSTM layer. Increasing the number of neurons can enhance the model's capacity to capture complex patterns, but it also increases the computational requirements. In your code, the range of `neurons_per_lstm_layer` is specified in the configuration file, allowing you to experiment with different values.
+The `neurons_per_lstm_layer` parameter determines the number of neurons (memory cells) in each LSTM layer. Increasing the number of neurons can enhance the model's capacity to capture complex patterns, but it also increases the computational requirements. The range of `neurons_per_lstm_layer` is specified in the configuration file, allowing you to experiment with different values.
 
 ### Input Shape
 
-The input shape of the LSTM layers is determined by the `input_timesteps` and `input_dim` parameters. `input_timesteps` corresponds to the number of time steps in each input sequence, while `input_dim` represents the number of features or variables included in the input data. In your code, the input shape is defined as `(input_timesteps, input_dim)`.
+The input shape of the LSTM layers is determined by the `input_timesteps` and `input_dim` parameters. `input_timesteps` corresponds to the number of time steps in each input sequence, while `input_dim` represents the number of features or variables included in the input data. The input shape is defined as `(input_timesteps, input_dim)`.
 
 ### Return Sequences
 
-The `return_seq` parameter specifies whether the LSTM layers should return sequences or only the final output. When set to `True`, the LSTM layers return the entire sequence of outputs, which is useful when stacking multiple LSTM layers together. In your code, the LSTM layers are configured to return sequences by setting `return_seq` to `True` in the configuration file.
+The `return_seq` parameter specifies whether the LSTM layers should return sequences or only the final output. When set to `True`, the LSTM layers return the entire sequence of outputs, which is useful when stacking multiple LSTM layers together. The LSTM layers are configured to return sequences by setting `return_seq` to `True` in the configuration file.
 
 ### Dropout
 
-Dropout is a regularization technique used to prevent overfitting in neural networks. It randomly sets a fraction of input units to 0 during training, which helps to reduce the model's reliance on specific features and improves its generalization ability. In your code, a dropout layer is inserted after each LSTM layer with a dropout rate specified by the `rate` parameter in the configuration file.
+Dropout is a regularization technique used to prevent overfitting in neural networks. It randomly sets a fraction of input units to 0 during training, which helps to reduce the model's reliance on specific features and improves its generalization ability. A dropout layer is inserted after each LSTM layer with a dropout rate.
 
 ### Dense Layer
 
-The final layer of the LSTM model is a dense layer with a linear activation function. This layer maps the output of the preceding LSTM layers to a single output value, representing the predicted stock price. The number of neurons in this dense layer is defined by the `neurons` parameter in the configuration file.
+The final layer of the LSTM model is a dense layer with a linear activation function. This layer maps the output of the preceding LSTM layers to a single output value, representing the predicted stock price. 
 
 ### Model Compilation
 
