@@ -51,7 +51,7 @@ Please note that this explanation assumes some familiarity with deep learning co
 - `config.json`: This JSON file contains the configuration parameters for data processing, training, and model architecture.
 
 ## Usage
-
+**Note: This project requires Python 3.11.**
 1. Make sure you have the required dependencies installed. You can install them by running the following command: `pip install -r requirements.txt`.
 2. Place your data file named `nasdaq100.csv` in the `data` directory.
 3. Adjust the hyperparameter ranges and other settings in the `config.json` file if needed.
