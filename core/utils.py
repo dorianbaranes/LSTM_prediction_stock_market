@@ -8,4 +8,4 @@ class Timer:
     def __exit__(self, exc_type, exc_value, traceback):
         self.end_time = time.time()
         self.duration = self.end_time - self.start_time
-        print(f"Task duration: {self.duration} seconds")
+        print(f"Task duration: {self.duration} / seconds {int(self.duration/60.0)} minutes")

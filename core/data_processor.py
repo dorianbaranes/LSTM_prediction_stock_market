@@ -2,6 +2,21 @@ import math
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
+from keras.utils import Sequence
+from sklearn.model_selection import train_test_split
+class DataGenerator(Sequence):
+    def __init__(self, X, y, batch_size):
+        self.X = X
+        self.y = y
+        self.batch_size = batch_size
+
+    def __len__(self):
+        return int(np.ceil(len(self.X) / self.batch_size))
+
+    def __getitem__(self, idx):
+        batch_X = self.X[idx * self.batch_size:(idx + 1) * self.batch_size]
+        batch_y = self.y[idx * self.batch_size:(idx + 1) * self.batch_size]
+        return batch_X, batch_y
 
 
 class DataLoader:
@@ -15,7 +30,8 @@ class DataLoader:
         self.len_train = len(self.data_train)
         self.len_test = len(self.data_test)
         self.len_train_windows = None
-
+        self.data_train_generator = None
+        self.data_val_generator = None
         # Train the Scaler with training data and smooth data
         scaler = MinMaxScaler(feature_range=(0, 1))
         smoothing_window_size = 1000
@@ -43,6 +59,18 @@ class DataLoader:
             for row_idx in range(self.data_train.shape[0]):
                 EMA = gamma * self.data_train[row_idx, col_idx] + (1 - gamma) * EMA
                 self.data_train[row_idx, col_idx] = EMA
+
+    def gen_data_generators(self,seq_len,split_train_val,batch_size):
+        # Split the data into training and validation sets
+        X,y=self.get_test_data(seq_len)
+        X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=split_train_val, random_state=42)
+
+        # Create your data generator for training
+        self.data_train_generator = DataGenerator(X_train, y_train, batch_size=batch_size)
+
+        # Create your data generator for validation
+        self.data_val_generator = DataGenerator(X_val, y_val, batch_size=batch_size)
+
 
     def get_test_data(self, seq_len):
         """

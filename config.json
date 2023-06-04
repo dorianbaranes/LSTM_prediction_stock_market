@@ -1,27 +1,62 @@
 {
     "data": {
         "filename": "nasdaq100.csv",
-        "from_date": "2010-01-01",
-        "columns": ["Mid_price", "Volume", "Price_range"],
-        "prediction_length": 25,
-        "sequence_length": 50,
-        "train_test_split": 0.85
+        "from_date": "2000-01-01",
+        "columns": [
+            "Mid_price",
+            "Volume",
+            "Price_range",
+            "interest_rate",
+            "real_gdp",
+            "sticky_cpi",
+            "eurusd",
+            "usdjpy",
+            "usdcny"
+        ],
+        "prediction_length": 50,
+        "sequence_length": {
+            "min": 130,
+            "max": 170,
+            "step": 10
+        },
+        "train_test_split": 0.90,
+        "validation_train_split": 0.1
     },
     "training": {
-        "epochs": {"min": 2, "max": 6, "step": 2},
-        "batch_size": {"min": 60, "max": 90, "step": 30}
+        "epochs": {
+            "min": 4,
+            "max": 10
+        },
+        "batch_size": {
+            "min": 90,
+            "max": 180,
+            "step": 30
+        }
     },
     "model": {
         "loss": "mse",
         "optimizer": "adam",
         "save_dir": "saved_models",
-        "neurons_per_lstm_layer": {"min": 100, "max": 200, "step": 100},
-        "lstm_layers": {"min": 2, "max": 3, "step": 1},
+        "neurons_per_lstm_layer": {
+            "min": 200,
+            "max": 300,
+            "step": 100
+        },
+        "lstm_layers": {
+            "min": 5,
+            "max": 7,
+            "step": 1
+        },
         "layers": [
-            {"type": "lstm", "input_timesteps": 49, "input_dim": 3, "return_seq": true},
-            {"type": "dropout", "rate": 0.2},
-            {"type": "hidden_lstm_layers"},
-            {"type": "dense", "neurons": 1, "activation": "linear"}
+            {
+                "type": "lstm_layers",
+                "dropout_rate": 0.2
+            },
+            {
+                "type": "dense",
+                "neurons": 1,
+                "activation": "linear"
+            }
         ]
     }
 }
