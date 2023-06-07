@@ -1,9 +1,12 @@
-# NASDAQ 100 LSTM Model
-
-This project implements an LSTM (Long Short-Term Memory) model for predicting the future trends of the NASDAQ 100 index. The model is trained using different combinations of hyperparameters to find the best configuration for accurate predictions.
+# Predict the stock market using LSTM
 
 
+This project implements an LSTM (Long Short-Term Memory) model for predicting the future trends of the NASDAQ 100 index. The model is trained using various combinations of hyperparameters to determine the optimal configuration for accurate predictions. 
+<br /><br />
 ![Image Description](images/nasdaq100_pred_v2.png)
+
+Note that you can utilize this code to forecast the trends of any stocks or other financial products.
+
 
 ## What is LSTM ?
 
