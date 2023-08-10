@@ -309,6 +309,8 @@ def check_model(model_filename):
         configs["data"]["from_date"],
     )
 
+    configs["data"]["prediction_length"] = 5
+
     path_model = os.path.join(configs["model"]["save_dir"],'models', model_filename)
     model = Model()
     model.load_model(path_model)

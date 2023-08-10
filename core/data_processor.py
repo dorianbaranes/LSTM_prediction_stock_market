@@ -34,9 +34,9 @@ class DataLoader:
         self.data_val_generator = None
         # Train the Scaler with training data and smooth data
         scaler = MinMaxScaler(feature_range=(0, 1))
-        smoothing_window_size = 1000
+        smoothing_window_size = 1500
 
-        # Iterate over the dataframe in chunks of 500 rows
+        # Iterate over the dataframe in chunks of 1000 rows
         for i in range(0, len(self.data_train), smoothing_window_size):
             chunk = self.data_train[
                 i : i + smoothing_window_size
@@ -62,7 +62,7 @@ class DataLoader:
 
     def gen_data_generators(self,seq_len,split_train_val,batch_size):
         # Split the data into training and validation sets
-        X,y=self.get_test_data(seq_len)
+        X,y=self.get_train_data(seq_len)
         X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=split_train_val, random_state=42)
 
         # Create your data generator for training

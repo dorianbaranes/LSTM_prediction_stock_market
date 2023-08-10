@@ -12,7 +12,7 @@ Note that you can utilize this code to forecast the trends of any stocks or othe
 
 The LSTM (Long Short-Term Memory) is a type of recurrent neural network (RNN) architecture that is well-suited for sequence prediction tasks, such as time series forecasting. It addresses the limitations of traditional RNNs by introducing specialized memory cells that can selectively store and retrieve information over long periods of time. LSTMs are particularly effective when dealing with sequences that exhibit long-term dependencies and complex patterns.
 
-In your code, the LSTM model is used for predicting stock prices in the NASDAQ 100 index. Let's dive into the key components and parameters of the LSTM model:
+In this code, the LSTM model is used for predicting stock prices in the NASDAQ 100 index. Let's dive into the key components and parameters of the LSTM model:
 
 ### LSTM Layers
 
@@ -25,10 +25,6 @@ The `neurons_per_lstm_layer` parameter determines the number of neurons (memory 
 ### Input Shape
 
 The input shape of the LSTM layers is determined by the `input_timesteps` and `input_dim` parameters. `input_timesteps` corresponds to the number of time steps in each input sequence, while `input_dim` represents the number of features or variables included in the input data. The input shape is defined as `(input_timesteps, input_dim)`.
-
-### Return Sequences
-
-The `return_seq` parameter specifies whether the LSTM layers should return sequences or only the final output. When set to `True`, the LSTM layers return the entire sequence of outputs, which is useful when stacking multiple LSTM layers together. The LSTM layers are configured to return sequences by setting `return_seq` to `True` in the configuration file.
 
 ### Dropout
 
@@ -79,6 +75,22 @@ The `config.json` file allows you to specify various hyperparameters for data pr
 - `batch_size`: The range of batch sizes to use during training. Different batch sizes will affect the learning dynamics and training time.
 - `neurons_per_lstm_layer`: The range of the number of neurons in each LSTM layer. Higher numbers can increase the model's capacity to capture complex patterns but may also lead to overfitting.
 - `lstm_layers`: The range of the number of LSTM layers in the model. Increasing the number of LSTM layers can improve the model's ability to learn hierarchical representations.
+
+### About Epoch and Batch Size:
+An epoch is a complete pass through the entire training dataset. In other words, the number of epochs  is the number of times the algorithm has seen the entire dataset during training. 
+<br><br>Training a neural network involves iteratively updating the model's weights using different batches of data. After each batch, the weights are adjusted slightly to reduce 
+the error. An epoch is completed when the algorithm has iterated through all batches of the training dataset. 
+Multiple epochs are usually required to train a model effectively, as they allow the network to learn from the entire dataset multiple times, refining its internal representations and improving its performance.
+
+**Batch Size**: The number of training examples used in a single update of the model's weights. <br>
+**Epoch**: One complete pass through the entire training dataset. Multiple epochs allow the model to learn from the data multiple times, improving its performance over time.
+
+
+
+
+
+
+
 
 ## Results
 

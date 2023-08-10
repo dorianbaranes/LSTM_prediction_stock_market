@@ -1,35 +1,30 @@
 {
     "data": {
-        "filename": "nasdaq100.csv",
-        "from_date": "2000-01-01",
+        "filename": "nasdaq_m30.csv",
+        "from_date": "2017-01-01",
         "columns": [
-            "Mid_price",
-            "Volume",
-            "Price_range",
-            "interest_rate",
-            "real_gdp",
-            "sticky_cpi",
-            "eurusd",
-            "usdjpy",
-            "usdcny"
+                "Mid_price",
+                "Tick volume",
+                "Price_range",
+                "Hour"
         ],
         "prediction_length": 50,
         "sequence_length": {
-            "min": 130,
-            "max": 170,
+            "min": 40,
+            "max": 60,
             "step": 10
         },
-        "train_test_split": 0.90,
+        "train_test_split": 0.95,
         "validation_train_split": 0.1
     },
     "training": {
         "epochs": {
-            "min": 4,
+            "min": 1,
             "max": 10
         },
         "batch_size": {
-            "min": 90,
-            "max": 180,
+            "min": 200,
+            "max": 200,
             "step": 30
         }
     },
@@ -39,12 +34,12 @@
         "save_dir": "saved_models",
         "neurons_per_lstm_layer": {
             "min": 200,
-            "max": 300,
+            "max": 200,
             "step": 100
         },
         "lstm_layers": {
             "min": 5,
-            "max": 7,
+            "max": 5,
             "step": 1
         },
         "layers": [
